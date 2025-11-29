@@ -46,9 +46,9 @@ const preWeddingEvents = [
       name: "Engagement",
       icon: "💍",
       description: "The beginning of our promise",
-      driveLink: "https://drive.google.com/drive/folders/YOUR_ENGAGEMENT_FOLDER_ID",
+      driveLink: "https://drive.google.com/drive/folders/1KLwsVkWX0wKm5GzRybK1RoSg14DQastU",
       color: "#FF9800",
-      image: "/images/engagement-preview.jpg"
+      image: "/images/YJP_7163.JPG"
     },
     {
       id: 6,

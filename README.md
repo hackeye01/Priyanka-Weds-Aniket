@@ -105,5 +105,3 @@ Some key files/folders:
 ## License
 
 This project is a personal wedding invitation; feel free to reference the code and adapt ideas for your own invites.
-# priyanka-weds-aniket
-# Priyanka-Weds-Aniket

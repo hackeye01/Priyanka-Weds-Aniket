@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Outlet, useNavigation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { LoadingScreen } from "./components/LoadingScreen";
-import { Navigation } from "./components/Navigation";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -35,7 +34,6 @@ export default function Root() {
 
   return (
     <Layout>
-      <Navigation />
       <AnimatePresence mode="wait">
         <motion.main
           key={navigation.location?.pathname}
