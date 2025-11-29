@@ -33,15 +33,6 @@ const preWeddingEvents = [
       image: "/images/sangeet-preview.jpg"
     },
     {
-      id: 4,
-      name: "Pre-Wedding Shoot",
-      icon: "📸",
-      description: "Romantic portraits and candid moments",
-      driveLink: "https://drive.google.com/drive/folders/YOUR_SHOOT_FOLDER_ID",
-      color: "#2196F3",
-      image: "/images/prewedding-preview.jpg"
-    },
-    {
       id: 5,
       name: "Engagement",
       icon: "💍",
@@ -55,9 +46,9 @@ const preWeddingEvents = [
       name: "Pooja & Rituals",
       icon: "🕉️",
       description: "Sacred ceremonies and family blessings",
-      driveLink: "https://drive.google.com/drive/folders/YOUR_POOJA_FOLDER_ID",
+      driveLink: "https://drive.google.com/drive/folders/1dNcPE63nB3NM5wWu31BOkIQN_gQPCkDr?usp=drive_link",
       color: "#4CAF50",
-      image: "/images/pooja-preview.jpg"
+      image: "YJP_5464.jpg"
     }
   ];
 
