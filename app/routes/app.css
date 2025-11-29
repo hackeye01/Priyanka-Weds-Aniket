@@ -1,0 +1,185 @@
+:root {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #333;
+  background: radial-gradient(circle at top, #ffe5ec, #fff);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Main app wrapper (actual pages) */
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.app--hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* LOADER STYLES */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #ffb3c6, #590d22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: #fff;
+}
+
+.loader-inner {
+  text-align: center;
+  padding: 2rem 2.5rem;
+}
+
+.loader-heart {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  margin: 0 auto 1.2rem auto;
+  transform: rotate(-45deg);
+  background: #ffccd5;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+.loader-heart::before,
+.loader-heart::after {
+  content: "";
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #ffccd5;
+}
+
+.loader-heart::before {
+  top: -36px;
+  left: 0;
+}
+
+.loader-heart::after {
+  left: 36px;
+  top: 0;
+}
+
+.loader-names {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.loader-text {
+  font-size: 0.96rem;
+  opacity: 0.9;
+  margin-bottom: 1.3rem;
+}
+
+.loader-bar {
+  width: 230px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: #fff;
+  animation: loading-bar 2.4s forwards;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+
+/* Animations */
+
+@keyframes pulse {
+  0% {
+    transform: rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.06);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+/* Add these styles to your app.css */
+
+/* Loading screen specific animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for elegance */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdf2f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}

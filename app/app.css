@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #333;
+    background: radial-gradient(circle at top, #ffe5ec, #fff);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Main app wrapper (actual pages) */
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.app--hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* LOADER STYLES */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #020617, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: #fff;
+}
+
+.loader-inner {
+  text-align: center;
+  padding: 2rem 2.5rem;
+}
+
+.loader-names {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+  text-transform: capitalize;
+  font-family: "Playfair Display", serif;
+}
+
+.loader-text {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-bottom: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+
+.loader-bar {
+  width: 230px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffe5ec, #ffb3c6, #fff0f6);
+  box-shadow: 0 0 18px rgba(255, 240, 246, 0.8);
+}
+
+.loader-bar-fill--interactive {
+  transition: width 0.25s ease-out;
+}
+
+.loader-progress-label {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.loader-mini-hint {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Animations */
+
+@keyframes pulse {
+  0% {
+    transform: rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.06);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

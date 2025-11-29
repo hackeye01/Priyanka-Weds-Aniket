@@ -1,0 +1,478 @@
+/* PAGE BACKGROUND + SPOTLIGHT */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&display=swap");
+
+.letter-page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Rich, realistic fabric-like background with slow motion */
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.18), transparent 55%),
+    radial-gradient(circle at 85% 100%, rgba(140, 0, 60, 0.35), transparent 60%),
+    linear-gradient(135deg, #2a0214 0%, #54112a 35%, #7b1d3d 65%, #b23958 88%, #f7c0d2 100%);
+  background-size: 180% 180%;
+  animation: bgMove 26s ease-in-out infinite;
+
+  color: #fef6e4;
+  transition: filter 1s ease;
+}
+
+.letter-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  /* subtle vignette and moving light when open */
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.13), transparent 55%),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.55), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.letter-page--open {
+  filter: saturate(1.1) brightness(1.05);
+}
+
+.letter-page--open::after {
+  opacity: 1;
+}
+
+.letter-page--open .letter-line1 {
+  animation: letterLine 0.9s ease-out 0.35s forwards;
+}
+
+/* TOAST NOTIFICATION */
+
+.letter-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* darker, richer glass card */
+  background: rgba(35, 5, 20, 0.95);
+  padding: 1.4rem 2.2rem;
+  border-radius: 18px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+
+  text-align: center;
+  color: #ffe9f4;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 320px;
+  max-width: 420px;
+
+  animation: toastInScale 0.8s ease-out forwards;
+  z-index: 9999;
+}
+
+.letter-toast-icon {
+  font-size: 1.6rem;
+}
+
+.letter-toast-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.toast-main {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.toast-sub {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+
+.toast-btn {
+  margin-top: 0.4rem;
+  border: none;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  background: #ffd67a;
+  color: #4a1b20;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.toast-btn:hover {
+  background: #ffe29c;
+  transform: scale(1.05);
+}
+
+
+.toast-main {
+  font-weight: 600;
+}
+
+.toast-sub {
+  opacity: 0.85;
+}
+/* ENVELOPE WRAPPER */
+
+.envelope-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  perspective: 1200px;
+
+  /* idle motion */
+  animation: envelopeIdle 4s ease-in-out infinite;
+
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* hidden before toast "OK" */
+.envelope-wrapper--hidden {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  pointer-events: none;
+}
+
+/* slide in after toast "OK" */
+.envelope-wrapper--show {
+  animation: envelopeSlideUp 1s ease-out both;
+}
+
+/* stop idle motion once opened (optional) */
+.envelope-wrapper--open {
+  animation: none;
+}
+
+/* ENVELOPE BASE */
+
+.envelope-3d {
+  position: relative;
+  width: 360px;
+  height: 230px;
+  transform-style: preserve-3d;
+  transition: transform 0.9s ease-in-out;
+}
+
+/* Z-INDEX LAYERS */
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f6ead5, #e8d2b5);
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.45);
+  z-index: 1;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 32% 0 0 0;
+  background: linear-gradient(135deg, #f5e4cf, #ebd4bd);
+  clip-path: polygon(0 0, 50% 65%, 100% 0, 100% 100%, 0 100%);
+  box-shadow:
+    inset 0 4px 8px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  z-index: 2;
+}
+
+/* flap in middle layer, letter above everything */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(135deg, #f9ecd6, #f1ddc1);
+  clip-path: polygon(0 0, 100% 0, 50% 80%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transform-style: preserve-3d;
+  transition: transform 0.9s ease-in-out;
+  backface-visibility: hidden;
+  z-index: 3;
+}
+
+.envelope-wrapper--open .envelope-flap {
+  transform: rotateX(-185deg);
+}
+
+.envelope-letter {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 18px;
+
+  width: 88%;
+  min-height: 70%;         /* grow with content */
+  height: auto;
+
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  padding: 2.2rem 2.6rem;    /* more breathing space */
+
+  transform: translateY(70px) scale(0.98);
+  opacity: 0;
+  transition: transform 0.9s ease-in-out 0.3s,
+              opacity 0.9s ease-in-out 0.3s;
+  z-index: 4;              /* letter above envelope */
+}
+
+/* when opened, slide the letter out nicely */
+.envelope-wrapper--open .envelope-letter {
+  transform: translateY(48px) scale(1.06);
+  opacity: 1;
+}
+
+/* LETTER TEXT */
+.letter-body {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 1.22rem;
+  line-height: 2.1;
+  color: #3b2a20;
+
+  text-align: left;
+  display: block;
+}
+
+/* each line as its own paragraph-like block */
+.letter-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(6px);
+  margin-bottom: 0.35rem;
+}
+
+/* first line (प्रिय दीदी) a little stronger */
+.letter-line1 {
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin-bottom: 0.7rem;
+}
+
+/* animations stay the same */
+.letter-page--open .letter-line1 {
+  animation: letterLine 0.7s ease-out 0.5s forwards;
+}
+.letter-page--open .letter-line2 {
+  animation: letterLine 0.7s ease-out 0.95s forwards;
+}
+.letter-page--open .letter-line3 {
+  animation: letterLine 0.7s ease-out 1.4s forwards;
+}
+
+.letter-page--open .letter-line4 {
+  animation: letterLine 0.7s ease-out 1.85s forwards;
+}
+/* BUTTON */
+
+.envelope-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  background: #f9e3ae;
+  color: #533a2b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+  align-self: center;
+  margin-top: 5rem; /* extra space below the letter */
+}
+
+.envelope-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  background: #ffe8bb;
+}
+
+/* keep button centered even when letter is open */
+.letter-page--open .envelope-btn {
+  align-self: center;
+  margin-right: 0;
+}
+
+/* WAX SEAL */
+
+.wax-seal {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  background: radial-gradient(circle at 30% 20%, #ffe3e0, #b4373f);
+  color: #ffe9e0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.6),
+    0 6px 14px rgba(0, 0, 0, 0.45);
+  z-index: 5;
+}
+
+.envelope-wrapper--open .wax-seal {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px) scale(0.8);
+  pointer-events: none;
+}
+
+/* GLOW UNDER ENVELOPE */
+
+.envelope-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 250px;
+  border-radius: 40%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
+  filter: blur(8px);
+  z-index: -1;
+}
+
+
+.envelope-wrapper--open .envelope-3d {
+  transform: translate(-4%, 4px) scale(1.04);
+  transition: transform 0.6s ease-out;
+}
+
+.envelope-wrapper {
+  animation: envelopeIdle 4s ease-in-out infinite;
+}
+
+.envelope-wrapper--open {
+  animation: none;
+}
+
+
+
+
+/* ANIMATIONS */
+
+@keyframes envelopeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bgMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Photo card on the left side of the opened letter */
+.letter-photo-card {
+  position: absolute;
+  top: 50%;
+  left: -600px; /* extra horizontal gap between photo and letter */
+  transform: translateY(-50%) translateX(20px);
+  opacity: 0;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.letter-photo-card img {
+  width: min(500px, 50vw); /* much larger but still responsive */
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Reveal photo only when the envelope is open */
+.envelope-wrapper--open .letter-photo-card {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@keyframes toastIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes toastPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes letterLine {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+@keyframes envelopeIdle {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.45));
+  }
+  50% {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 24px 35px rgba(0, 0, 0, 0.55));
+  }
+}

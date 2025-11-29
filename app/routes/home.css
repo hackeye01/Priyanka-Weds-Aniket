@@ -1,0 +1,111 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3D depth for cube flip */
+  perspective: 1200px;
+
+  /* layered, animated gradient */
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(100, 0, 50, 0.25), transparent 70%),
+    linear-gradient(135deg, #2a0214 0%, #6d1433 30%, #a93354 60%, #dd6f85 85%, #ffb5c8 100%);
+  background-size: 160% 160%;
+  animation: bgMove 18s ease-in-out infinite;
+
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card {
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.08)
+  );
+  padding: 2.5rem;
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+  color: #fef6e4;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  /* 👇 remove old cardFloatIn animation, it fights with transform */
+  /* animation: cardFloatIn 1.4s ease-out; */
+
+  /* for flip */
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  transform-origin: center;
+}
+
+/* cube-style flip state */
+.glass-card--flip {
+  transform: rotateY(90deg) scale(0.95);
+  opacity: 0;
+}
+
+.couple-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.2rem;
+  object-fit: cover;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Names - main focal point */
+.name-title {
+  color: #ebd8c4;               /* soft champagne beige */
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  animation: glowText 4s ease-in-out infinite;
+}
+
+@keyframes glowText {
+  0% { text-shadow: 0 2px 12px rgba(255, 255, 255, 0.1); }
+  50% { text-shadow: 0 2px 16px rgba(255, 255, 255, 0.4); }
+  100% { text-shadow: 0 2px 12px rgba(255, 255, 255, 0.1); }
+}
+
+/* Supporting text */
+.welcome-text,
+.wedding-date {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Button */
+.journey-btn {
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  background: #f9e3ae;
+  color: #533a2b;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.journey-btn:hover {
+  background: #ffe8bb;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* keep your bgMove if it's not already defined somewhere else */
+@keyframes bgMove {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 0%; }
+}
