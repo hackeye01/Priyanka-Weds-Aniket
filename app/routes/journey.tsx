@@ -3,10 +3,69 @@ import { useNavigate } from "react-router-dom";
 import "./journey.css";
 
 // Photo data structure
+// Childhood photos are real; later stages are placeholders you can update with final images
 const journeyPhotos = [
-  { id: 1, src: "/images/sample1.jpeg", caption: "The beginning of our joy", decade: "Childhood" },
-  { id: 2, src: "/images/sample2.jpeg", caption: "Surrounded by love", decade: "Childhood" },
-  // Add more photos as needed
+  // Childhood – real journey of Priya
+  {
+    id: 1,
+    src: "/images/Priya didi Journey/1.jpg", 
+    caption: "Tiny Priya, held close in everyone’s arms – the beginning of a beautiful story.",
+    
+  },
+  {
+    id: 2,
+    src: "/images/Priya didi Journey/2.jpg", 
+    caption: "Innocent smiles, playful eyes and a home filled with her laughter.",
+    
+  },
+  {
+    id: 3,
+    src: "/images/Priya didi Journey/3.JPG", 
+    caption: "Little moments, big memories – the family’s princess growing day by day.",
+    
+  },
+  {
+    id: 4,
+    src: "/images/Priya didi Journey/4.JPG",
+    caption: "School days, tiny bag and big dreams – Priya stepping out into the world.",
+    
+  },
+  {
+    id: 5,
+    src: "/images/Priya didi Journey/5.jpg",
+    caption: "All dressed up for family functions, stealing the show with her innocent charm.",
+    
+  },
+  {
+    id: 6,
+    src: "/images/Priya didi Journey/6.jpg",
+    caption: "From a little princess to a graceful young girl – every year adding more memories.",
+    
+  },
+
+  // College – placeholder (update src later)
+  {
+    id: 101,
+    src: "/images/placeholder-college.jpg", 
+    caption: "From a shy daughter to a confident young woman, building her own dreams.",
+    
+  },
+
+  // Engagement – placeholder (update src later)
+  {
+    id: 201,
+    src: "/images/YJP_7163.JPG", // TODO: change to engagement photo of Priya & Aniket
+    caption: "Two hearts, one promise – the day Priya and Aniket chose each other forever.",
+    
+  },
+
+  // Wedding – placeholder (update src later)
+  {
+    id: 301,
+    src: "/images/couple1.jpg", // TODO: change to Priya's wedding day photo
+    caption: "All the love, prayers and years of memories leading to her grand bridal entry.",
+    
+  },
 ];
 
 export default function Journey() {
@@ -53,7 +112,6 @@ export default function Journey() {
           >
             <img src={photo.src} alt={photo.caption} />
             <div className="photo-overlay">
-              <div className="decade-badge">{photo.decade}</div>
               <div className="photo-caption">{photo.caption}</div>
             </div>
           </div>
