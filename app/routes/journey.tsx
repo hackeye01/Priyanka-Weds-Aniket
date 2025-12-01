@@ -9,37 +9,37 @@ const journeyPhotos = [
   {
     id: 1,
     src: "/images/Priya didi Journey/1.jpg", 
-    caption: "Tiny Priya, held close in everyone’s arms – the beginning of a beautiful story.",
+    caption: "Little Priyanka, the tiny smile that brightened every corner of our home.",
     
   },
   {
     id: 2,
     src: "/images/Priya didi Journey/2.jpg", 
-    caption: "Innocent smiles, playful eyes and a home filled with her laughter.",
+    caption: "Priyanka’s classic pose — full of attitude, confidence, and cuteness.",
     
   },
   {
     id: 3,
     src: "/images/Priya didi Journey/3.JPG", 
-    caption: "Little moments, big memories – the family’s princess growing day by day.",
+    caption: "Priyanka growing into a graceful young girl, glowing more each year.",
     
   },
   {
     id: 4,
     src: "/images/Priya didi Journey/4.JPG",
-    caption: "School days, tiny bag and big dreams – Priya stepping out into the world.",
+    caption: "A confident and charming Priyanka, stepping closer to her dreams.",
     
   },
   {
     id: 5,
     src: "/images/Priya didi Journey/5.jpg",
-    caption: "All dressed up for family functions, stealing the show with her innocent charm.",
+    caption: "eenage Priyanka — curious, joyful, and ready to explore the world.",
     
   },
   {
     id: 6,
     src: "/images/Priya didi Journey/6.jpg",
-    caption: "From a little princess to a graceful young girl – every year adding more memories.",
+    caption: "Priyanka’s laughter that could make even the river smile.",
     
   },
 
@@ -55,15 +55,15 @@ const journeyPhotos = [
   {
     id: 201,
     src: "/images/YJP_7163.JPG", // TODO: change to engagement photo of Priya & Aniket
-    caption: "Two hearts, one promise – the day Priya and Aniket chose each other forever.",
+    caption: "Priyanka, beginning a beautiful new chapter with the one who makes her happiest",
     
   },
 
   // Wedding – placeholder (update src later)
   {
     id: 301,
-    src: "/images/couple1.jpg", // TODO: change to Priya's wedding day photo
-    caption: "All the love, prayers and years of memories leading to her grand bridal entry.",
+    src: "/images/couple3.png", // TODO: change to Priya's wedding day photo
+    caption: "Priyanka and her partner, promising forever under the golden sky.",
     
   },
 ];

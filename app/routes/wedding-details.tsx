@@ -5,51 +5,43 @@ import "./wedding-details.css";
 export default function WeddingDetails() {
   const navigate = useNavigate();
 const preWeddingEvents = [
-    {
+  {
       id: 1,
-      name: "Haldi Ceremony",
-      icon: "🟡",
-      description: "Turmeric blessings and golden moments",
-      driveLink: "https://drive.google.com/drive/folders/YOUR_HALDI_FOLDER_ID",
-      color: "#FFD700",
-      image: "/images/haldi-preview.jpg"
-    },
-    {
+      name: "Pooja & Rituals",
+      icon: "🕉️",
+      description: "Sacred ceremonies and family blessings",
+      driveLink: "https://drive.google.com/drive/folders/1dNcPE63nB3NM5wWu31BOkIQN_gQPCkDr?usp=drive_link",
+      color: "#4CAF50",
+      image: "/images/YJP_5464.jpg"
+  },
+     {
       id: 2,
-      name: "Mehndi Night",
-      icon: "🌺",
-      description: "Intricate henna and vibrant celebrations",
-      driveLink: "https://drive.google.com/drive/folders/YOUR_MEHNDI_FOLDER_ID", 
-      color: "#E91E63",
-      image: "/images/mehndi-preview.jpg"
-    },
-    {
-      id: 3,
-      name: "Sangeet",
-      icon: "💃",
-      description: "Music, dance and joyful performances",
-      driveLink: "https://drive.google.com/drive/folders/YOUR_SANGEET_FOLDER_ID",
-      color: "#9C27B0",
-      image: "/images/sangeet-preview.jpg"
-    },
-    {
-      id: 5,
       name: "Engagement",
       icon: "💍",
       description: "The beginning of our promise",
       driveLink: "https://drive.google.com/drive/folders/1KLwsVkWX0wKm5GzRybK1RoSg14DQastU",
       color: "#FF9800",
       image: "/images/YJP_7163.JPG"
+    },  
+  {
+      id: 3,
+      name: "Haldi Ceremony",
+      icon: "🟡",
+      description: "Turmeric blessings and golden moments",
+      driveLink: "https://drive.google.com/drive/folders/YOUR_HALDI_FOLDER_ID",
+      color: "#FFD700",
+      image: "/images/Haldi.jpg"
     },
     {
-      id: 6,
-      name: "Pooja & Rituals",
-      icon: "🕉️",
-      description: "Sacred ceremonies and family blessings",
-      driveLink: "https://drive.google.com/drive/folders/1dNcPE63nB3NM5wWu31BOkIQN_gQPCkDr?usp=drive_link",
-      color: "#4CAF50",
-      image: "YJP_5464.jpg"
-    }
+      id: 4,
+      name: "Sangeet",
+      icon: "💃",
+      description: "Music, dance and joyful performances",
+      driveLink: "https://drive.google.com/drive/folders/YOUR_SANGEET_FOLDER_ID",
+      color: "#9C27B0",
+      image: "/images/sangeet.png"
+    },
+ 
   ];
 
   const handleDriveClick = (link: string, eventName: string) => {
@@ -81,7 +73,7 @@ const preWeddingEvents = [
         <div className="hero-section">
           <div className="couple-photo-frame">
             <img 
-              src="/images/couple.jpg" 
+              src="/images/couple3.png" 
               alt="Priyanka & Aniket" 
               className="couple-photo"
             />
@@ -94,6 +86,7 @@ const preWeddingEvents = [
             </h1>
             <div className="wedding-date-glow">
               <span className="date-number">02</span>
+              <br />
               <span className="date-rest">December 2025</span>
             </div>
           </div>
@@ -103,14 +96,14 @@ const preWeddingEvents = [
         <div className="timeline-section">
           <div className="section-header">
             <div className="section-icon">⏳</div>
-            <h2>Celebration Timeline</h2>
+            <h2>Wedding Timeline</h2>
           </div>
           
           <div className="premium-timeline">
             <div className="timeline-item">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <div className="timeline-time">11:30 AM</div>
+                <div className="timeline-time">11 AM</div>
                 <div className="timeline-event">Baraat Procession</div>
                 <div className="timeline-desc">Grand entrance with traditional music</div>
               </div>
@@ -119,7 +112,7 @@ const preWeddingEvents = [
             <div className="timeline-item">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <div className="timeline-time">12:00 PM</div>
+                <div className="timeline-time">12:24 PM</div>
                 <div className="timeline-event">Vivah Ceremony</div>
                 <div className="timeline-desc">Sacred wedding rituals & pheras</div>
               </div>
@@ -128,7 +121,7 @@ const preWeddingEvents = [
             <div className="timeline-item">
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <div className="timeline-time">01:30 PM</div>
+                <div className="timeline-time">01:00 PM</div>
                 <div className="timeline-event">Wedding Lunch</div>
                 <div className="timeline-desc">Grand reception with family & friends</div>
               </div>
@@ -206,7 +199,11 @@ const preWeddingEvents = [
                 style={{ '--event-color': event.color } as React.CSSProperties}
               >
                 <div className="event-image">
-                  <img src={event.image} alt={event.name} />
+                  <img 
+                    src={event.image} 
+                    alt={event.name} 
+                    className={event.name === "Engagement" ? "engagement-image" : undefined}
+                  />
                   <div className="event-overlay">
                     <div className="event-icon">{event.icon}</div>
                     <div className="view-gallery">

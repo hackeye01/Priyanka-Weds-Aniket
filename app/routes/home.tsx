@@ -93,7 +93,7 @@ export default function Home() {
 
         {/* Countdown */}
         <motion.div className="mb-2" variants={item}>
-          <Countdown date="2025-12-02T12:00:00" />
+          <Countdown date="2025-12-02T12:24:00" />
           {/* <Countdown date="2025-11-27T12:00:00" /> */}
         </motion.div>
 
