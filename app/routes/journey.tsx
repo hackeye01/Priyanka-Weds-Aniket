@@ -43,14 +43,6 @@ const journeyPhotos = [
     
   },
 
-  // College – placeholder (update src later)
-  {
-    id: 101,
-    src: "/images/placeholder-college.jpg", 
-    caption: "From a shy daughter to a confident young woman, building her own dreams.",
-    
-  },
-
   // Engagement – placeholder (update src later)
   {
     id: 201,
